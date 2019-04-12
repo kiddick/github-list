@@ -1,5 +1,11 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h3>Just login with yout github profile and check your awesome repos</h3>
   </div>
 </template>
+
+<style scoped>
+h3 {
+  padding: 10px;
+}
+</style>
