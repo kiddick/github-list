@@ -2,15 +2,29 @@
   <header class="header">
     <h1>Github API explorer</h1>
     <div id="nav">
-      <router-link to="/">Home</router-link>|
+      <router-link v-if="loggedIn" to="/logout">Log out |</router-link>
+      <router-link v-if="!loggedIn" to="/login">Log in |</router-link>
+      <router-link to="/">Dashboard</router-link>|
       <router-link to="/about">About</router-link>
     </div>
   </header>
 </template>
 
 <script>
+import auth from "@/auth";
+
 export default {
-  name: "Header"
+  name: "header",
+  data () { 
+    return {
+      loggedIn: auth.loggedIn()
+    }
+  },
+  created () {
+    auth.onChange = loggedIn => {
+      this.loggedIn = loggedIn
+    }
+  }
 };
 </script>
 
