@@ -1,8 +1,9 @@
 <template>
-  <div>
+  <div class="login">
     <form @submit="login">
       <p>You need to login to continue..</p>
-      <input type="submit" value="Submit" class="btn">
+      <!-- <input type="submit" value="xxx" class="btn"> -->
+      <button class="btn"><i class="fab fa-github"></i> Login with GitHub </button>
     </form>
   </div>
 </template>
@@ -23,14 +24,27 @@ export default {
 </script>
 
 <style scoped>
-form {
+.login {
   display: flex;
-  width: 300px;
-}
-p {
+  width: 30%;
+  height: 300px;
   margin: auto;
+  padding: 10px;
 }
-input[type="submit"] {
-  flex: 2;
+form {
+  border: 1px solid black;
+  display: flex;
+  flex-flow: column;
+  margin: auto;
+  width: 80%;
+}
+form > p {
+  align-self: center;
+
+}
+.btn {
+  align-self: center;
+  margin: 10px auto;
+  width: 80%;
 }
 </style>

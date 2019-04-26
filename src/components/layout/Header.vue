@@ -15,25 +15,30 @@ import auth from "@/auth";
 
 export default {
   name: "header",
-  data () { 
+  data() {
     return {
       loggedIn: auth.loggedIn()
-    }
+    };
   },
-  created () {
+  created() {
     auth.onChange = loggedIn => {
-      this.loggedIn = loggedIn
-    }
+      this.loggedIn = loggedIn;
+    };
   }
 };
 </script>
 
 <style scoped>
+h1 {
+  margin: 0;
+}
 .header {
+  flex: 1;
   background: #333;
   color: #fff;
   text-align: center;
   padding: 10px;
+  margin: 0;
 }
 .header a {
   color: #fff;
