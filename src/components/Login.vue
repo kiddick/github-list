@@ -2,8 +2,9 @@
   <div class="login">
     <form @submit="login">
       <p>You need to login to continue..</p>
-      <!-- <input type="submit" value="xxx" class="btn"> -->
-      <button class="btn"><i class="fab fa-github"></i> Login with GitHub </button>
+      <button class="btn">
+        <i class="fab fa-github"></i> Login with GitHub
+      </button>
     </form>
   </div>
 </template>
@@ -14,10 +15,7 @@ import auth from "@/auth";
 export default {
   methods: {
     login() {
-      auth.login(loggedIn => {
-        this.$router.replace(this.$route.query.redirect || "/");
-      });
-      // this.$router.push(this.$route.query.redirect);
+      auth.login();
     }
   }
 };
@@ -40,7 +38,6 @@ form {
 }
 form > p {
   align-self: center;
-
 }
 .btn {
   align-self: center;

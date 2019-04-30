@@ -12,6 +12,7 @@
 
 <script>
 import auth from "@/auth";
+import axios from "axios";
 
 export default {
   name: "header",
@@ -21,9 +22,18 @@ export default {
     };
   },
   created() {
+    this.loggedIn = auth.loggedIn();
     auth.onChange = loggedIn => {
       this.loggedIn = loggedIn;
     };
+  },
+  beforeCreate() {
+    setTimeout(function() {
+      axios.get("/api/is_authenticated/").then(res => {
+        localStorage.setItem("loggedIn", res.data.status);
+      });
+      this.loggedIn = auth.loggedIn();
+    }, 5000);
   }
 };
 </script>

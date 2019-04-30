@@ -31,7 +31,6 @@ const router = new Router({
     {
       path: '/logout',
       beforeEnter: (to, from, next) => {
-        console.log(router)
         auth.logout()
         // I dislike this due to whole page reload, but can't figure out better solution for now to trigger beforeEnter after logout redirect :(
         router.go('/')

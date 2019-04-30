@@ -1,5 +1,10 @@
+import axios from "axios";
+
 export default {
-    login(cb) {
+    login() {
+        axios.get('/api/auth2').then(res => { window.location = res.data.to })
+    },
+    login2(cb) {
         cb = arguments[arguments.length - 1]
         localStorage.token = 'aaa'
         if (localStorage.token) {
@@ -9,12 +14,13 @@ export default {
         }
     },
     logout(cb) {
-        delete localStorage.token
+        localStorage.setItem('loggedIn', false)
+        axios.get('/api/logout').then(res => console.log(res))
         if (cb) cb()
         this.onChange(false)
     },
     loggedIn() {
-        return !!localStorage.token
+        return localStorage.loggedIn === 'true'
     },
     onChange() { }
 }
